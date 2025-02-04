@@ -5,23 +5,28 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define delay 100
+#define delay 75
 
 int main(void) {
 
 DDRC=0b11111111; // PORTC als Ausgang einstellen
 
-
+uint8_t i;
 while (1) {
-  /* code */
-  PORTC = ~(0b00001111); // MSB Bit7 ....  LSB Bit0
-
-  _delay_ms(delay);
-  PORTC = ~(0b00000000); // MSB Bit7 ....  LSB Bit0
-
-  _delay_ms(delay);
-}
-
+ 
+  for ( i = 0; i <=7; i++)
+  {
+    
+    PORTC = ~(1<<i); //
+    _delay_ms(delay);
+  }
+  for ( i = 6; i >0; i--)
+  {
+   
+    PORTC = ~(1<<i); //
+    _delay_ms(delay);
+  }
+ }
 
 return 0;
 }
