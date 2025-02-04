@@ -40,6 +40,22 @@ UDR = data;
 
 }
 
+void uart_puts( char* pstring) {
+
+char* pdata= pstring;
+while(*pdata !=0){
+ uart_putc(*pdata);
+ pdata++;
+}
+
+}
+
+unsigned char uart_getc( void ) {
+/* Wait for data to be received */ 
+while ( !(UCSRA & (1<<RXC)) );
+/* Get and return received data from buffer */ 
+return UDR;
+}
 
 
 
@@ -47,15 +63,21 @@ int main(void) {
 
 DDRC=0b11111111; // PORTC als Ausgang einstellen
 
-PORTC= 0xFF;
+PORTC= 0xfe;
 
 uart_init();
+unsigned char data;
+
+uart_puts("Moin\n\r");
 
 while (1) {
  
+data=uart_getc();
+PORTC= ~(data-0x30);
 uart_putc('F') ; 
 uart_putc('7') ; 
 uart_putc('3') ; 
+
 }
 
 return 0;
