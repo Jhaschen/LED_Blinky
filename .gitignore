@@ -1,1 +1,9 @@
 .vscode
+*.eep
+*.elf
+*.hex
+.dep
+obj
+*.lss
+*.map
+*sym
