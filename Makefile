@@ -77,11 +77,11 @@ OBJDIR = obj
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = main.c
+SRC = 
 
 
 # List C++ source files here. (C dependencies are automatically generated.)
-CPPSRC =
+CPPSRC = main.cpp
 
 
 # List Assembler source files here.
